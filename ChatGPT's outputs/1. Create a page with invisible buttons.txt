@@ -1,0 +1,73 @@
+Claro! Abaixo está um exemplo de código HTML, CSS e JavaScript que cria uma página com uma caixa azul no centro e botões invisíveis que exibem uma caixa de mensagem quando o mouse passa por cima deles:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+            background-color: #3498db;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .button {
+            width: 100px;
+            height: 40px;
+            margin: 10px;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            display: none;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="button" id="button1">Botão 1<span class="tooltip">Mensagem do Botão 1</span></button>
+        <button class="button" id="button2">Botão 2<span class="tooltip">Mensagem do Botão 2</span></button>
+        <button class="button" id="button3">Botão 3<span class="tooltip">Mensagem do Botão 3</span></button>
+    </div>
+    <script>
+        const buttons = document.querySelectorAll('.button');
+
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                const tooltip = button.querySelector('.tooltip');
+                tooltip.style.display = 'block';
+            });
+
+            button.addEventListener('mouseleave', () => {
+                const tooltip = button.querySelector('.tooltip');
+                tooltip.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
+```
+
+Este código cria uma caixa azul centralizada na página com três botões invisíveis dentro dela. Quando você passa o mouse sobre um botão, uma caixa de mensagem é exibida acima do botão. Você pode adicionar mais botões seguindo o mesmo padrão.
