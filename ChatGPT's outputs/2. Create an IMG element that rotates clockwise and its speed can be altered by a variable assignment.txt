@@ -1,0 +1,48 @@
+Você pode criar uma tag de imagem com uma animação de rotação constante em torno de seu próprio eixo, em sentido horário, usando CSS e JavaScript. Para permitir que a velocidade da animação seja facilmente alterável por meio da atualização de uma variável, você pode usar variáveis CSS (variáveis personalizadas). Aqui está um exemplo de como fazer isso:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --rotation-speed: 3s; /* Defina a velocidade inicial aqui */
+        }
+
+        #rotating-image {
+            width: 200px;
+            height: 200px;
+            animation: rotate var(--rotation-speed) linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="rotating-image" src="sua-imagem-aqui.jpg" alt="Imagem Rotativa">
+    
+    <script>
+        // Para alterar a velocidade da animação, você pode fazer o seguinte:
+        // Altere o valor da variável --rotation-speed para a velocidade desejada (por exemplo, 1s para mais rápido ou 5s para mais lento).
+        // Você pode fazer isso dinamicamente usando JavaScript da seguinte maneira:
+
+        // Exemplo: Alterar a velocidade para 2 segundos (mais rápido)
+        document.documentElement.style.setProperty('--rotation-speed', '2s');
+
+        // Exemplo: Alterar a velocidade para 5 segundos (mais lento)
+        document.documentElement.style.setProperty('--rotation-speed', '5s');
+    </script>
+</body>
+</html>
+```
+
+Neste exemplo, a variável `--rotation-speed` é usada para controlar a velocidade da animação de rotação. Você pode alterar o valor dessa variável para acelerar ou desacelerar a rotação da imagem. O JavaScript é usado para atualizar dinamicamente o valor da variável, permitindo que você ajuste a velocidade da animação conforme necessário.

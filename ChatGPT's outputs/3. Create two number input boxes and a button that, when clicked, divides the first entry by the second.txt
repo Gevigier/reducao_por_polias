@@ -1,0 +1,60 @@
+Você pode criar duas caixas de entrada de texto para inserir números, um botão para calcular a divisão e um local para exibir o resultado. Aqui está um exemplo de código HTML, CSS e JavaScript para fazer isso:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Divisão</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        input[type="number"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        #resultado {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="numero1" placeholder="Digite o primeiro número" step="any">
+        <input type="number" id="numero2" placeholder="Digite o segundo número" step="any">
+        <button onclick="calcularDivisao()">Calcular</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularDivisao() {
+            var num1 = parseFloat(document.getElementById("numero1").value);
+            var num2 = parseFloat(document.getElementById("numero2").value);
+
+            if (!isNaN(num1) && !isNaN(num2) && num2 !== 0) {
+                var resultado = num1 / num2;
+                document.getElementById("resultado").innerText = "Resultado da divisão: " + resultado.toFixed(2);
+            } else {
+                document.getElementById("resultado").innerText = "Digite números válidos e certifique-se de que o segundo número não seja zero.";
+            }
+        }
+    </script>
+</body>
+</html>
+```
+
+Este código HTML cria uma interface com duas caixas de entrada para inserir números, um botão "Calcular" e um local para exibir o resultado. Quando você clica no botão "Calcular", a função `calcularDivisao` é chamada, que pega os valores das caixas de entrada, realiza a divisão e exibe o resultado ou uma mensagem de erro, se aplicável. Certifique-se de inserir números válidos e não dividir por zero. O resultado será exibido com duas casas decimais.

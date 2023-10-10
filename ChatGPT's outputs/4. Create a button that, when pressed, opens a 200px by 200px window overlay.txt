@@ -1,0 +1,78 @@
+Para criar um botão que, ao ser pressionado, abra uma janela flutuante (também conhecida como modal) que esteja alinhada ao centro da página e tenha um tamanho de 200px por 200px, você pode usar JavaScript e CSS. Aqui está um exemplo de como fazer isso:
+
+HTML:
+
+```html
+<button id="abrirModal">Abrir Modal</button>
+<div class="modal-overlay" id="modal">
+  <div class="modal-content">
+    <!-- Conteúdo do modal -->
+    <p>Este é o conteúdo do modal.</p>
+    <button id="fecharModal">Fechar</button>
+  </div>
+</div>
+```
+
+CSS:
+
+```css
+/* Estilos para a tela de fundo do modal (overlay) */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para o conteúdo do modal */
+.modal-content {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para o botão de fechar o modal */
+#fecharModal {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #0074d9;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+```
+
+JavaScript:
+
+```javascript
+const abrirModalBtn = document.getElementById('abrirModal');
+const modal = document.getElementById('modal');
+const fecharModalBtn = document.getElementById('fecharModal');
+
+abrirModalBtn.addEventListener('click', () => {
+  modal.style.display = 'block';
+});
+
+fecharModalBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Fechar o modal quando clicar fora dele
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+```
+
+Neste exemplo, temos um botão com a ID "abrirModal" que, quando clicado, exibe o modal com a classe "modal-overlay" que contém o conteúdo do modal (um parágrafo e um botão de fechar). O modal é centralizado na página e tem um tamanho de 200px por 200px. Quando o botão "Fechar" dentro do modal é clicado ou quando você clica fora do modal, ele se fecha.
