@@ -22,12 +22,12 @@ Este trabalho de física contou com um modelo físico replicando a ilustração 
         <img src="/presentation images/01.jpeg" alt="Notebook next to physical college work model" height="300" />
       </td>
       <td align="center">
-        <img src="/presentation images/02.jpeg" alt="Texto Alternativo da Imagem 2" height="300" />
+        <img src="/presentation images/02.jpeg" alt="Notebook screen displaying the code interface" height="300" />
       </td>
     </tr>
     <tr>
       <td colspan="2" align="center">
-        <img src="/presentation images/03.jpeg" alt="Texto Alternativo da Imagem 3" height="220" />
+        <img src="/presentation images/03.jpeg" alt="Complete view of the college work. A notebook, displaying the program's interface, next to a motor and a set of three pulleys fixed to a base." height="220" />
       </td>
     </tr>
   </table>
