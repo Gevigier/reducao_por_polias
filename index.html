@@ -169,12 +169,12 @@
                 document.getElementById("motor_tooltip").innerText = (
                     "Frequência (f): "            + frequency                            + " Hz \n" +
                     "Período (T): "               + period                               + " s \n" +
-                    "Raio (R): "                  + rad.toFixed(2)                       + " m \n" +
+                    "Raio (R): "                  + rad.toFixed(5)                       + " m \n" +
                     "Velocidade Angular (ω): "    + (angular_speed / Math.PI).toFixed(2) + "π rad/s \n\n" +
                     "Velocidade Tangencial (v): " + tangential_speed                     + " m/s"
                     )
 
-                updateModal(0, rad.toFixed(2), frequency, period, (angular_speed / Math.PI).toFixed(2), tangential_speed);
+                updateModal(0, rad.toFixed(5), frequency, period, (angular_speed / Math.PI).toFixed(2), tangential_speed);
 
                 document.documentElement.style.setProperty('--rotation-speed-motor', period + "s");
 
@@ -212,7 +212,7 @@
                     "Velocidade Tangencial (v): " + tangential_speed                     + " m/s"
                     )
 
-                    updateModal(i, pulley_radius.toFixed(2), pulley_frequency, period, (angular_speed / Math.PI).toFixed(2), tangential_speed);
+                    updateModal(i, pulley_radius.toFixed(5), pulley_frequency, period, (angular_speed / Math.PI).toFixed(2), tangential_speed);
                 }
                 
                 document.getElementById("resultado").innerText = "";
