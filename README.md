@@ -6,3 +6,29 @@ Os códigos foram desenvolvidos inteiramente por mim durante uma tarde toda de d
 Utilizei Chat-GPT para criar a base do código. Todos os outputs da AI estão disponíveis no repositório.
 
 Este trabalho de física contou com um modelo físico replicando a ilustração e os princípios aplicados nesta representação gráfica. Este modelo físico teve participação dos alunos de Engenharia Mecânica de segundo semestre: Leonardo Soares da Silva; Matheus Henrique Martins; Juliano Rodrigues da Silva.
+
+<hr>
+
+<div align="center">
+  
+### [Visualize este projeto online agora](https://reducao-por-polias.vercel.app/)
+#### Imagens do trabalho:
+</div>
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="/presentation images/01.jpeg" alt="Notebook next to physical college work model" height="300" />
+      </td>
+      <td align="center">
+        <img src="/presentation images/02.jpeg" alt="Texto Alternativo da Imagem 2" height="300" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <img src="/presentation images/03.jpeg" alt="Texto Alternativo da Imagem 3" height="220" />
+      </td>
+    </tr>
+  </table>
+</div>
