@@ -1,0 +1,376 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #E0E4CC;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+    position: relative; 
+}
+
+.pulleys_n_belts {
+    width: 80%;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.pulleys_img {
+    width: 100%;
+}
+
+.button {
+    width: 5%;
+    padding-top: 5%;
+    background-color: transparent;
+    border-width: 1px;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+}
+
+.component {
+    width: 5%; 
+    padding-top: 5%; 
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+}
+
+.component_button {
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.component#motor {
+    width: 6.7%; 
+    padding-top: 6.7%; 
+    left:0%;
+}
+
+.component#pulley_1 {
+    width: 7.7%; 
+    padding-top: 7.7%; 
+    left:27.25%;
+}
+
+.component#pulley_2 {
+    width: 13.6%; 
+    padding-top: 13.6%; 
+    left:48.3%;
+}
+
+.component#pulley_3 {
+    width: 22.5%;
+    padding-top: 22.5%; 
+    right:0.13%;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    display: none;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    Width: 230px;
+}
+.button#button1 {
+    width: 6.5%; 
+    padding-top: 6.5%; 
+    left:0%;
+}
+.button#button2 {
+    width: 120px;
+    height: 120px;
+    top: 280px;
+    left: 210px;
+}
+
+
+:root {
+    --rotation-speed-motor: 99999s; 
+    --rotation-speed-pulley1: 99999s; 
+    --rotation-speed-pulley2: 99999s; 
+    --rotation-speed-pulley3: 99999s; 
+}
+
+.rotating-image { 
+    position: absolute;
+    height: 90%;
+    top: 4.8%;
+    left: 29.5%;
+}
+
+.rotating-image#rotate_motor {
+    height: 12%;
+    top: 44.5%;
+    left: 46%;
+    animation: rotate var(--rotation-speed-motor) linear infinite;
+}
+
+.rotating-image#rotate_pulley_1 {
+    animation: rotate var(--rotation-speed-pulley1) linear infinite;
+}
+
+.rotating-image#rotate_pulley_2 {
+    animation: rotate var(--rotation-speed-pulley2) linear infinite;
+}
+
+.rotating-image#rotate_pulley_3 {
+    animation: rotate var(--rotation-speed-pulley3) linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+input[type="number"] {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#resultado {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.input-box {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.input-box p {
+    margin-left: 5px;
+}
+
+.header {
+    margin-top: 20px;
+    width: 100%;
+    height: 220px;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: left;
+    padding-left: 20px;
+    line-height: 80%;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    line-height: 40%;
+}
+
+#calculator-header {
+    font-weight: bold;
+}
+
+.calculator-space {
+    display: flex;
+    width: 62%;
+}
+
+.item {
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-flow: column;
+}
+
+.button-container {
+    flex: 2;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 5%;
+    padding-left: 5%; 
+}
+
+.math-button {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.calculate-button {
+    width: 25%;
+    background-color: coral;
+    background-color: gray;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+.modal-content {
+    width: 1300px;
+    height: 600px;
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#fecharModal {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #d87093;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.modal-full {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-columns {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-column {
+    flex: 1;
+    display: flex;
+    height: 100%;
+}
+
+.modal-column#modal-motor {
+    background-color: #e2f7f0;
+}
+
+.modal-column#modal-pulley1 {
+    background-color: violet;
+    background-color: #c5efe1;
+}
+
+.modal-column#modal-pulley2 {
+    background-color: red;
+    background-color: #a9e7d2
+}
+
+.modal-column#modal-pulley3 {
+    background-color: olivedrab;
+    background-color: #8cdfc3;
+}
+
+.modal-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: small;
+    line-height: 200%;
+}
+
+.left h1 {
+    font-size: 300%;
+}
+
+.left h3, h4{
+    font-size: 90%;
+    font-style: italic;
+}
+
+.credits {
+    width: 100%;
+    position: absolute;
+    bottom: 0%;
+    display: flex;
+    justify-content: right;
+}
+
+.credits p, h4 {
+    padding: 0.5%;
+}

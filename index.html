@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redução por Polias</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="modal-overlay" id="modal">
+            <div class="modal-content">
+              <div class="modal-full">
+                <div class="modal-columns">
+                    <div class="modal-column" id="modal-motor"></div>
+                    <div class="modal-column" id="modal-pulley1"></div>
+                    <div class="modal-column" id="modal-pulley2"></div>
+                    <div class="modal-column" id="modal-pulley3"></div>
+                </div>
+                <button id="fecharModal">Fechar</button>
+              </div>
+
+            </div>
+          </div>
+    
+
+        <div class="header">
+          <div class="content">
+            <div class="left">
+                <div>
+                    <h1>
+                        Redução por Polias
+                    </h1>
+                    <h2>
+                        Semana Acadêmica 02/10 - 06/10
+                    </h2>
+                </div>
+
+                <hr>
+
+                <div>
+                    <h3>
+                        Unopar Pitágoras Anhanguera - Campus Catuaí Londrina
+                    </h3>
+                    <h4>
+                        Parcial 02 - Física Geral e Experimental: Energia
+                    </h4>
+                </div>
+
+            </div>
+            <div class="right">
+                <p id="calculator-header">
+                    Calculadora
+                </p> 
+                <div class="calculator-space">
+                    <div class="item">
+                        <div class="input-box">
+                            <input type="number" id="frequency_hz" placeholder="Digite a frequência do motor" step="any">
+                            <p>
+                                hertz (Hz)
+                            </p>
+                        </div>
+                        <div class="input-box">
+                            <input type="number" id="radius" placeholder="Digite o raio do eixo do motor" step="any">
+                            <p>
+                                metros (m)
+                            </p>
+                        </div>
+                        <button onclick="calculate()" class="calculate-button">
+                            Visualizar
+                        </button>
+                    </div>
+                    
+                    <div class="item button-container">
+                      <button class="math-button" id="abrirModal">
+                        Ver fórmulas
+                    </button>
+                    </div>
+
+                </div>
+                <div id="resultado"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pulleys_n_belts">
+        <img class="pulleys_img" src="pulleys_n_belts.png" alt="Imagem Rotativa">
+        <div class="component" id="motor">
+            <img class="rotating-image" src="rotation-img.png" id="rotate_motor">
+            <button class="component_button"><span class="tooltip" id="motor_tooltip">Motor</span></button>
+        </div>
+        <div class="component" id="pulley_1">
+            <img class="rotating-image" src="rotation-img.png" id="rotate_pulley_1">
+            <button class="component_button"><span class="tooltip" id="pulley1_tooltip">Polia 01</span></button>
+        </div>
+        <div class="component" id="pulley_2">
+            <img class="rotating-image" src="rotation-img.png" id="rotate_pulley_2">
+            <button class="component_button"><span class="tooltip" id="pulley2_tooltip">Polia 02</span></button>
+        </div>
+        <div class="component" id="pulley_3">
+            <img class="rotating-image" src="rotation-img.png" id="rotate_pulley_3">
+            <button class="component_button"><span class="tooltip" id="pulley3_tooltip">Polia 03</span></button>
+        </div>
+    </div>
+
+    <div class="credits">
+        <h4> Alunos: </h4>
+        <p>
+        Marcos Gabriel Gevigier - Eng. da Computação <br>
+        Leonardo Soares da Silva - Eng. Mecânica <br>
+        Matheus Henrique Martins - Eng. Mecânica <br>
+        Juliano Rodrigues da Silva - Eng. Mecânica
+        </p>
+    </div>
+
+    <script>
+
+        const component_buttons = document.querySelectorAll('.component_button');
+
+        component_buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                const tooltip = button.querySelector('.tooltip');
+                tooltip.style.display = 'block';
+            });
+
+            button.addEventListener('mouseleave', () => {
+                const tooltip = button.querySelector('.tooltip');
+                tooltip.style.display = 'none';
+            });
+        });
+
+        function calculate_period(ang_speed) {
+            return (2*Math.PI/ang_speed)
+        }
+
+        function calculate_angular_speed_with_period(period_hz) {
+            angular_speed = (2*Math.PI/period_hz)
+            return (angular_speed)
+        }
+
+        function calculate_angular_speed_with_tangential_n_radius(tan_speed, radius) {
+            angular_speed = (tan_speed/radius)
+            return (angular_speed)
+        }
+
+        function calculate_tangential_speed(ang_speed, radius) {
+            tan_speed = ang_speed*radius
+            return (tan_speed.toFixed(2))
+        }
+
+        function calculate() {
+            var frequency = parseFloat(document.getElementById("frequency_hz").value);
+            var rad = parseFloat(document.getElementById("radius").value);
+
+            if (!isNaN(frequency) && !isNaN(rad) && rad !== 0) {
+
+                abrirModalBtn.style.display = 'block';
+
+                var period = 1 / frequency;
+
+                var angular_speed = calculate_angular_speed_with_period(period);
+                var tangential_speed = calculate_tangential_speed(angular_speed, rad);
+
+                document.getElementById("motor_tooltip").innerText = (
+                    "Frequência (f): "            + frequency                            + " Hz \n" +
+                    "Período (T): "               + period                               + " s \n" +
+                    "Raio (R): "                  + rad.toFixed(2)                       + " m \n" +
+                    "Velocidade Angular (ω): "    + (angular_speed / Math.PI).toFixed(2) + "π rad/s \n\n" +
+                    "Velocidade Tangencial (v): " + tangential_speed                     + " m/s"
+                    )
+
+                updateModal(0, rad.toFixed(2), frequency, period, (angular_speed / Math.PI).toFixed(2), tangential_speed);
+
+                document.documentElement.style.setProperty('--rotation-speed-motor', period + "s");
+
+                for (var i = 1; i <= 3; i++) {
+                    switch (i) {
+                        case 1:
+                            // pulley1_proportion = (632.24/100);
+                            pulley1_proportion = (700/100);
+                            pulley_radius = (rad*pulley1_proportion);
+                            break;
+                        case 2:
+                            // pulley2_proportion = (1139.03/100);
+                            pulley2_proportion = (1140.00/100);
+                            pulley_radius = (rad*pulley2_proportion);
+                            break;
+                        case 3:
+                            // pulley3_proportion = (1827.00/100);
+                            pulley3_proportion = (2020/100);
+                            pulley_radius = (rad*pulley3_proportion);
+                            break;
+                    }
+
+                    var angular_speed = calculate_angular_speed_with_tangential_n_radius(tangential_speed, pulley_radius);
+
+                    period           = calculate_period(angular_speed).toFixed(2)
+                    pulley_frequency = (1/period).toFixed(2)
+
+                    document.documentElement.style.setProperty(('--rotation-speed-pulley' + i), period + "s");
+
+                    document.getElementById(("pulley" + i + "_tooltip")).innerText = (
+                    "Frequência (f): "            + pulley_frequency                     + " Hz \n" +
+                    "Período (T): "               + period                               + " s \n" +
+                    "Raio (R): "                  + pulley_radius.toFixed(5)             + " m \n" +
+                    "Velocidade Angular (ω): "    + (angular_speed / Math.PI).toFixed(2) + "π rad/s \n\n" +
+                    "Velocidade Tangencial (v): " + tangential_speed                     + " m/s"
+                    )
+
+                    updateModal(i, pulley_radius.toFixed(2), pulley_frequency, period, (angular_speed / Math.PI).toFixed(2), tangential_speed);
+                }
+                
+                document.getElementById("resultado").innerText = "";
+
+
+            } else {
+                document.getElementById("resultado").innerText = "Digite números válidos e certifique-se de que o segundo número não seja zero.";
+            }
+        }
+
+        const abrirModalBtn = document.getElementById('abrirModal');
+        const modal = document.getElementById('modal');
+        const fecharModalBtn = document.getElementById('fecharModal');
+
+        abrirModalBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        });
+
+        fecharModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        });
+
+        // Fechar o modal quando clicar fora dele
+        window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+        });
+
+        function updateModal (element_collumn, radius, frequency, period, angular_speed, tangential_speed) {
+
+            if (element_collumn == 0) {
+                document.getElementById("modal-motor").innerHTML = (
+                    "<h3> Motor </h3>" +
+
+                    "O raio (R) do eixo é de " + radius + " metros (m) <br><br>" +
+
+                    "A frequência (f) é de " + frequency + " hertz (Hz) <br><br>" +
+
+                    "Para calcular o período (T), fazemos: <br>" +
+                    "T = 1/f = 1/" + frequency + " = " + period + " segundos (s) <br><br>" + 
+
+                    "Cálculo de velocidade angular (ω): <br>" +
+                    "ω = 2π/T = 2π/" + period + " = " + angular_speed + "π rad/s <br><br>" +
+                    
+                    "Cálculo de velocidade tangencial (v): <br>" +
+                    "v = ω * R = " + angular_speed + " * " + radius + " = " + tangential_speed + " m/s"
+                    );
+            } else {
+                switch (element_collumn) {
+                    case 1:
+                        document.getElementById(("modal-pulley" + element_collumn)).innerHTML = "<h3> Polia 01 (pequena) </h3>"
+                        proportion = pulley1_proportion;
+                        break;
+                    case 2:
+                        document.getElementById(("modal-pulley" + element_collumn)).innerHTML = "<h3> Polia 02 (média) </h3>"
+                        proportion = pulley2_proportion;
+                        break;
+                    case 3:
+                        document.getElementById(("modal-pulley" + element_collumn)).innerHTML = "<h3> Polia 03 (grande) </h3>"
+                        proportion = pulley3_proportion;
+                        break;
+                }
+                document.getElementById(("modal-pulley" + element_collumn)).innerHTML += (
+                    "Esta polia é " + (proportion*100).toFixed(1) + "x maior que o eixo do motor (pré fixado) <br>" +
+                    "Portanto, seu raio (R) é de " + radius + " metros (m) <br><br>" +
+
+                    "Na transmissão por correias, a velocidade tangencial (v) se conserva: <br>" +
+                    "v(motor) = v(polia) <br>" +
+                    tangential_speed + " m/s = " + tangential_speed + " m/s <br><br>" +
+
+                    "Cálculo de velocidade angular (ω): <br>" +
+                    "ω = v/R = " + tangential_speed + "/" + radius + " = " + angular_speed + "π rad/s <br><br>" +
+
+                    "Cálculo de período (T): <br>" +
+                    "T = 2π/ω = 2π/" + angular_speed + " = " + period + " segundos <br><br>" +
+
+                    "Cálculo de frequência (f): <br>" +
+                    "f = 1/T = 1/" + period + " = " + frequency + " hertz (Hz)"
+                    );
+            }
+
+            document.getElementById("resultado").innerText = "teste ";
+        }
+
+    </script>
+</body>
+</html>
